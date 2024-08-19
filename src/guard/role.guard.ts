@@ -2,7 +2,7 @@
 import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { UserService } from "src/user/user.service";
-
+ 
 @Injectable()
 export class RoleGuard implements CanActivate{
     constructor(private reflector: Reflector, private userService: UserService){}
@@ -12,7 +12,7 @@ export class RoleGuard implements CanActivate{
         const roles = this.reflector.get<string[]>('roles', context.getHandler()); // The roles variables retrieve the roles
         //meta data attached to the route handler (the function that will handle the request).
         // console.log('roles', roles);
-
+ 
         const request = context.switchToHttp().getRequest();
         // The request object represents the incoming HTTP request. It contains information like headers, the current user and other request-related data.
 
